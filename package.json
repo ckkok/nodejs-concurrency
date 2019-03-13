@@ -1,0 +1,33 @@
+{
+  "name": "nodejsthreaddemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "servebasic": "node --experimental-modules --no-warnings ./server-examples/server-basic.mjs",
+    "servecluster": "node --experimental-modules --no-warnings ./server-examples/server-cluster.mjs",
+    "servethreaded": "node --experimental-modules --no-warnings ./server-examples/server-threaded.mjs",
+    "servethreadpool": "node --experimental-modules --no-warnings ./server-examples/server-threadpool.mjs",
+    "serveall": "node --experimental-modules --no-warnings ./server-examples/ server-multiall.mjs",
+    "servesocket": "node --experimental-modules --no-warnings ./server-examples/server-low-level.mjs",
+    "serveatomics": "node --experimental-modules --no-warnings ./server-examples/server-threaded-atomics.mjs",
+    "primecalc": "node --experimental-modules --no-warnings ./prime-computing/prime-computing.mjs",
+    "primecalcthreaded": "node --experimental-modules --no-warnings ./prime-computing/prime-computing-threaded.mjs",
+    "jsonparse": "node --experimental-modules --no-warnings ./json-parsing/json-parsing.mjs",
+    "jsonparsethreaded": "node --experimental-modules --no-warnings ./json-parsing/json-parsing-threaded.mjs",
+    "jsonparsethreadedv2": "node --experimental-modules --no-warnings ./json-parsing/json-parsing-threaded-v2.mjs",
+    "counting": "node --experimental-modules --no-warnings ./large-counting/counting.mjs",
+    "countingcluster": "node ./large-counting/counting-clustered.js",
+    "countingthreaded": "node --experimental-modules --no-warnings ./large-counting/counting-threaded.mjs",
+    "countingthreadedv2": "node --experimental-modules --no-warnings ./large-counting/counting-threaded-v2.mjs",
+    "countingthreadedv3": "node --experimental-modules --no-warnings ./large-counting/counting-threaded-v3.mjs",
+    "syncbroken": "node --experimental-modules --no-warnings ./ThreadPool/synchronizationisbrokendemo.mjs",
+    "loadtest": "artillery run ./server-examples/loadtest.yml"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^2.0.1"
+  }
+}

@@ -1,0 +1,14 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - duration: 30
+      arrivalRate: 2
+  variables:
+    num:
+      - "5000"
+      - "10000"
+scenarios:
+  - name: "Load testing"
+    flow:
+      - get:
+          url: "/prime/{{ num }}"
