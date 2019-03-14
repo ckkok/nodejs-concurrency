@@ -6,7 +6,7 @@ const workerJS = `
 const { workerData, parentPort } = require('worker_threads');
 
 parentPort.on('message', msg => {
-  for (let i = 0; i < (10e5 / 2); i++) {
+  for (let i = 0; i < (10e6 / 2); i++) {
     // workerData[0]++;
     Atomics.add(workerData, 0, 1);
   }

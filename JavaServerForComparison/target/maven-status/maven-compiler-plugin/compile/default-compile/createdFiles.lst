@@ -1,0 +1,6 @@
+com/example/primegenerator/ResponseModel.class
+com/example/primegenerator/PrimeCalculatorService.class
+com/example/primegenerator/PrimegeneratorApplication.class
+com/example/primegenerator/PrimeController.class
+com/example/primegenerator/ServletInitializer.class
+com/example/primegenerator/BigIntResponseModel.class

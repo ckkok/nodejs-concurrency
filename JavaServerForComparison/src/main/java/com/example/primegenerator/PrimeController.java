@@ -14,7 +14,7 @@ public class PrimeController {
         this.primeCalculatorService = primeCalculatorService;
     }
 
-    @GetMapping("/{num}")
+    @GetMapping("/big/{num}")
     public BigIntResponseModel getPrime(@PathVariable("num") String num) {
         Long start = System.currentTimeMillis();
         BigInteger result = primeCalculatorService.getNthPrime(BigInteger.valueOf(Long.valueOf(num)));
@@ -23,7 +23,7 @@ public class PrimeController {
 
     }
 
-    @GetMapping("/small/{num}")
+    @GetMapping("/{num}")
     public ResponseModel getLargePrime(@PathVariable("num") String num) {
         Long start = System.currentTimeMillis();
         int result = primeCalculatorService.getNthPrimeNumber(Integer.valueOf(num));

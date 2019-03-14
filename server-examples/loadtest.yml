@@ -2,11 +2,11 @@ config:
   target: "http://localhost:8080"
   phases:
     - duration: 30
-      arrivalRate: 2
+      arrivalRate: 15
   variables:
     num:
-      - "5000"
-      - "10000"
+      - "20000"
+      - "30000"
 scenarios:
   - name: "Load testing"
     flow:

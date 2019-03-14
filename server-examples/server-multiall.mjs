@@ -1,9 +1,10 @@
-import * as Primes from '../lib/primes';
 import cluster from 'cluster';
 import os from 'os';
 import fastify from 'fastify';
 import { ThreadPool } from '../ThreadPool/threadpool';
+import path from 'path';
 
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const numCpus = os.cpus().length;
 
 if (cluster.isMaster) {
@@ -19,12 +20,11 @@ if (cluster.isMaster) {
 
   const dataBuffer = new SharedArrayBuffer( Int32Array.BYTES_PER_ELEMENT * 8);
   const pool = new ThreadPool({
-    file: './worker-atomics.mjs',
+    file: __dirname + '/worker-atomics.mjs',
     toEval: false,
     initialSize: 4,
     maxSize: 8,
-    bufferSize: Int32Array.BYTES_PER_ELEMENT * 8,
-    name: 'DeadPool'
+    name: 'ServerPool'
   }, dataBuffer);
 
   const dataView = new Int32Array(dataBuffer);
@@ -47,11 +47,11 @@ if (cluster.isMaster) {
     const start = Date.now();
     const worker = await pool.getThread();
     dataView[worker.threadId] = parseInt(req.params.num, 10);
-    Atomics.notify(pool.getBuffer(), worker.threadId);
     worker.once('message', result => {
       reply.send({result, processingTime: Date.now() - start});
       worker.release();
     })
+    Atomics.notify(pool.getBufferView(), worker.threadId);
   }
   
   const server = fastify({ logger: false });

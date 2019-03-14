@@ -8,7 +8,7 @@
     "servecluster": "node --experimental-modules --no-warnings ./server-examples/server-cluster.mjs",
     "servethreaded": "node --experimental-modules --no-warnings ./server-examples/server-threaded.mjs",
     "servethreadpool": "node --experimental-modules --no-warnings ./server-examples/server-threadpool.mjs",
-    "serveall": "node --experimental-modules --no-warnings ./server-examples/ server-multiall.mjs",
+    "serveall": "node --experimental-modules --no-warnings ./server-examples/server-multiall.mjs",
     "servesocket": "node --experimental-modules --no-warnings ./server-examples/server-low-level.mjs",
     "serveatomics": "node --experimental-modules --no-warnings ./server-examples/server-threaded-atomics.mjs",
     "primecalc": "node --experimental-modules --no-warnings ./prime-computing/prime-computing.mjs",

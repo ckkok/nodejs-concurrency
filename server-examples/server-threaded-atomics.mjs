@@ -8,8 +8,7 @@ const pool = new ThreadPool({
   file: __dirname + '/worker-atomics.mjs',
   toEval: false,
   initialSize: 4,
-  maxSize: 50,
-  bufferSize: Int32Array.BYTES_PER_ELEMENT * 65536,
+  maxSize: 8,
   name: 'DeadPool'
 }, dataBuffer);
 
@@ -36,7 +35,7 @@ const requestHandler = (req, reply) => {
       worker.release();
       reply.send({result, processingTime: Date.now() - start});
     });
-    worker.postMessage(0);
+    Atomics.notify(pool.getBufferView(), worker.threadId);
   })
 }
 

@@ -1,7 +1,7 @@
 import fastify from 'fastify';
 import * as Primes from '../lib/primes';
 
-const useBigInt = true;
+const useBigInt = false;
 const processor = useBigInt ? Primes.getNthPrime : Primes.getNthPrimeNumber;
 
 const schema = {

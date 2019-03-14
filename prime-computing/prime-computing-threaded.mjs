@@ -32,9 +32,8 @@ function asyncFunc() {
   console.log('===========');
   const start = Date.now();
   const runAsync = n => {
-    return new Promise((resolve, reject) => {
-      const result = processor(n);
-      resolve(result);
+    return new Promise(resolve => {
+      resolve(processor(n));
     })
   }
   Promise.all(toCalc.map(runAsync)).then(results => {
@@ -49,7 +48,7 @@ function indivThreads() {
   console.log('==================');
   const workerScript = `
   const { workerData, parentPort } = require('worker_threads');
-  const { getNthPrime, getNthPrimeNumber } = require('../lib/primes');
+  const { getNthPrime, getNthPrimeNumber } = require('./lib/primes');
   const useBigInt = true;
   const processor = useBigInt ? getNthPrime : getNthPrimeNumber;
   parentPort.postMessage(processor(workerData));
@@ -63,8 +62,9 @@ function indivThreads() {
       if (results.length >= 4) {
         console.log(results);
         console.log('Time:', Date.now() - start);
-        process.exit(0);
       }
+      worker.terminate();
+      worker.unref();
     })
   })
 }
