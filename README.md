@@ -8,3 +8,4 @@ Check package.json for npm scripts to start the various servers and tasks.
 
 The Java Server can be used as a performance reference for the multithreaded/threadpooled versions of the NodeJS/fastify servers.
 
+The loadtest.yml script in the server-examples folder is meant to be used with artillery.io. Run npm i -g artillery and then artillery run loadtest.yml to start the load test on the servers (run one first) to see the effects of multithreading on response times and peak load capacity, especially when using the threadpool.
